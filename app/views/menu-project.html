@@ -1,0 +1,16 @@
+<li role="presentation">
+    <a href="#">
+        <span class="label label-primary" ng-click="count()">
+            {{data.project.caption}}
+        </span>
+
+        <span ng-repeat="layer in data.layers">
+
+            &nbsp;||&nbsp;
+            <span class="label label-success" ng-click="clickLayer($index)" data-placement="bottom" data-type="info" data-animation="am-fade-and-scale" data-title="{{layer.caption}}" content="" bs-tooltip>
+                {{layer.caption}}
+            </span>
+
+        </span>
+    </a>
+</li>

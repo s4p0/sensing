@@ -1,0 +1,80 @@
+<nav class="navbar navbar-default navbar-fade" role="navigation">
+    <div id="navbar-wrapper">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.forestwatchers.net/">
+                <img class="small-logo" src="//tugui.dmz.inpe.br/static/images/logov4.png" ) class="small-logo" />
+            </a>
+        </div>
+
+        <!-- simple menu >> NavbarRouteCtrl -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller="NavbarCtrl" ng-init="initialize()">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="item in menu">
+                    <a ng-href="{{item.link}}">
+                        <span class="ng-bind {{item.glyph}}"></span>&nbsp;{{item.title}}</a>
+                </li>
+                <!-- dropdown menus >> contribute -->
+                <li class="dropdown" ng-repeat="item in dropdownMenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="ng-bind {{item.glyph}}"></span>&nbsp;{{item.title}}<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="sub in item.links"><a href="{{sub.link}}">{{sub.title}}</a>
+                        </li>
+                    </ul>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-th"></span>&nbsp;Projects&nbsp;<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <fc-project ng-repeat="item in projects" source="item"></fc-project>
+                        <!-- <li role="presentation" fc-project ng-repeat="item in projects" source="item" visible="true"></li> -->
+                        <!-- <li ng-repeat="item in projects">
+                            
+                            <a href="#">
+                                <span class="label label-primary">
+                                    {{item.project.caption}}
+                                </span>
+
+                                <span ng-repeat="layer in item.layers">
+
+                                    &nbsp;||&nbsp;
+                                    <span class="label label-success" ng-click="clickProject(item, $index)" data-placement="bottom" data-type="info" data-animation="am-fade-and-scale" data-title="{{layer.caption}}" content="" bs-tooltip ng-click="">
+                                        {{layer.caption}}
+                                    </span>
+
+                                </span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </li>
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-th-list"></span>&nbsp;Base Layers&nbsp;<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="layer in baseLayers">
+                            <a href="#" ng-click="ShowBaseLayer(layer.name)">{{layer.title}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
